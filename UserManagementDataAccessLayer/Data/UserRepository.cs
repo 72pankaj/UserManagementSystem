@@ -41,6 +41,37 @@ namespace UserManagementDataAccessLayer.Data
             return users;
         }
 
+
+        public User GetUserById(int userId)
+        {
+            using (var connection = new SqlConnection(_connectionString))
+            {
+                connection.Open();
+
+                var query = "SELECT Id, Name FROM Users WHERE Id = @UserId";
+                using (var command = new SqlCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("@UserId", userId);
+
+                    using (var reader = command.ExecuteReader())
+                    {
+                        if (reader.Read())
+                        {
+                            return new User
+                            {
+                                Id = (int)reader["Id"],
+                                Name = (string)reader["Name"],
+                                // Add other properties as needed
+                            };
+                        }
+                    }
+                }
+            }
+
+            // Return null if no user with the specified ID is found
+            return null;
+        }
+
         public void AddUser(User user)
         {
             // ado.net code to add user.

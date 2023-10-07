@@ -17,5 +17,11 @@ namespace UserManagement.Controllers
             var users = _userService.GetAllUsers();
             return View(users);
         }
+
+        public IActionResult GetUserById(int id)
+        {
+            var user = _userService.GetUserById(id);
+            return View(user);
+        }
     }
 }

@@ -11,5 +11,7 @@ namespace UserManagementDataAccessLayer.Interfaces
     {
         List<User> GetAllUsers();
         void AddUser(User user);
+
+        User GetUserById(int userId);
     }
 }

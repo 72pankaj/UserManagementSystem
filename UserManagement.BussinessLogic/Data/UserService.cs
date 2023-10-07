@@ -24,6 +24,11 @@ namespace UserManagement.BussinessLogic.Data
             return _userRepository.GetAllUsers();
         }
 
+        public User GetUserById(int id)
+        {
+            var user = _userRepository.GetUserById(id);
+            return user; 
+        }
         public void AddUser(User user)
         {
             _userRepository.AddUser(user);
