@@ -1,5 +1,6 @@
 ﻿using Microsoft.Data.SqlClient;
 using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Options;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,13 +13,11 @@ namespace UserManagementDataAccessLayer.Data
 {
     public class UserRepository : IUserRepository
     {
-        private readonly IConfiguration _configuration;
         private readonly string _connectionString;
 
-        public UserRepository(IConfiguration configuration)
+        public UserRepository(IOptions<DatabaseOptions> databaseOptions)
         {
-            _configuration = configuration;
-            _connectionString = _configuration.GetConnectionString("DefaultConnection");
+            _connectionString = databaseOptions.Value.ConnectionString;
         }
 
         public List<User> GetAllUsers()

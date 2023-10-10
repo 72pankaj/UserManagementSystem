@@ -1,5 +1,7 @@
 
 using Microsoft.Data.SqlClient;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Options;
 using UserManagement.BussinessLogic.Data;
 using UserManagement.BussinessLogic.Interfaces;
 using UserManagementDataAccessLayer.Data;
@@ -19,11 +21,13 @@ internal class Program
         builder.Services.AddScoped(_ => new SqlConnection(connectionString));
         builder.Services.AddTransient<IUserService, UserService>();
         builder.Services.AddTransient<IUserRepository, UserRepository>();
-        //builder.Services.AddTransient<IUserService, UserService>();
+        builder.Services.Configure<DatabaseOptions>(x => x.ConnectionString = connectionString);
+                // builder.Services.Configure<DatabaseOptions>("", configuration.GetConnectionString("DefaultConnection"));
+                //builder.Services.AddTransient<IUserService, UserService>();
 
 
 
-        var app = builder.Build();
+                var app = builder.Build();
 
         // Configure the HTTP request pipeline.
         if (!app.Environment.IsDevelopment())
