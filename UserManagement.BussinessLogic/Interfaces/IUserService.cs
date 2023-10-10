@@ -10,7 +10,7 @@ namespace UserManagement.BussinessLogic.Interfaces
     public interface IUserService
     {
         List<User> GetAllUsers();
-        void AddUser(User user);
+        //void AddUser(User user);
 
         User GetUserById(int id);
         // Add other methods for user management.

@@ -72,9 +72,9 @@ namespace UserManagementDataAccessLayer.Data
             return null;
         }
 
-        public void AddUser(User user)
-        {
-            // ado.net code to add user.
-        }
+        //public void AddUser(User user)
+        //{
+        //    // ado.net code to add user.
+        //}
     }
 }

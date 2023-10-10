@@ -10,7 +10,7 @@ namespace UserManagementDataAccessLayer.Interfaces
     public interface IUserRepository
     {
         List<User> GetAllUsers();
-        void AddUser(User user);
+        //void AddUser(User user);
 
         User GetUserById(int userId);
     }

@@ -29,10 +29,10 @@ namespace UserManagement.BussinessLogic.Data
             var user = _userRepository.GetUserById(id);
             return user; 
         }
-        public void AddUser(User user)
-        {
-            _userRepository.AddUser(user);
-        }
+        //public void AddUser(User user)
+        //{
+        //    _userRepository.AddUser(user);
+        //}
 
         // Implement other methods.
     }
